@@ -10,8 +10,11 @@ module.exports = class Auth {
     res.render("login",{err: req.flash('error')[0]});
   }
   logout(req,res){
-    req.logout();
-    res.redirect("/");
+    req.logout(
+        (err) => {
+          res.redirect("/");
+      }
+    )
   }
 
   profile(req,res){
